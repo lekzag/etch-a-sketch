@@ -35,7 +35,7 @@ btn.addEventListener('click', () => {
     let playerChoice = prompt('Type the number of grid mesh on a side! 100 is the limit.');
     numberOfContent = parseInt(playerChoice);
 
-    if (numberOfContent < 1 || typeof numberOfContent !== 'number' || numberOfContent > 100) {
+    if (isNaN(numberOfContent) || numberOfContent < 1 || numberOfContent > 100) {
         window.alert('Type a valid number between 1-100')
     }
     else {newGrid(numberOfContent)};
