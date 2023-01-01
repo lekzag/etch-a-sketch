@@ -16,19 +16,52 @@ function startingGrid() {
         gridContainer.appendChild(content);
 }};
 
+
 // as mouse is over a div, the function to change color is called
+function mouseOver(content) {
 const contents = document.querySelectorAll('.content');
 contents.forEach((content) => {
     content.addEventListener('mouseover', () => {
-        changeColor(content)
+        randomColorMesh(content)
     });
 });
+}
+mouseOver();
 
-// change color of content
-function changeColor(content) {
+// change color of content to black
+function blackenMesh(content) {
     content.style.transition = "background-color 0.5s";
-    content.style.backgroundColor = 'blue';
+    content.style.backgroundColor = 'black';
 };
+
+// generate random color
+function randomColor() {
+    colorHex = '#' + Math.floor(Math.random()*16777215).toString(16);
+    // return colorHex;
+}
+
+// change mesh color to random
+function randomColorMesh(content) {
+    randomColor();
+    content.style.transition = "background-color 0.5s";
+    content.style.backgroundColor = colorHex;
+};
+
+// change color to get darker 10%
+function darkenMesh() {
+const contents = document.querySelectorAll('.content');
+
+contents.forEach((content) => {
+    let brightness = 100;
+    content.addEventListener('mouseenter', () => {
+
+        brightness -= 10;
+        content.style.filter = `brightness(${brightness}%)`;
+    });
+});
+};
+
+// darkenMesh();
 
 // event click call the function to generate new grid
 btn.addEventListener('click', () => {
